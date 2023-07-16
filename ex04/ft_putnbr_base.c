@@ -6,7 +6,7 @@
 /*   By: deydoux <deydoux@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:18:20 by deydoux           #+#    #+#             */
-/*   Updated: 2023/07/10 14:06:49 by deydoux          ###   ########.fr       */
+/*   Updated: 2023/07/16 10:27:26 by deydoux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ void	ft_putnbr_base(int nbr, char *base)
 	base_len = ft_strlen(base);
 	if (base_len <= 1 || check_base(base))
 		return ;
+	if (nbr == -2147483648)
+	{
+		ft_putnbr_base(-2147483648 / base_len, base);
+		ft_putnbr_base(-2147483648 % base_len * -1, base);
+		return ;
+	}
 	if (nbr < 0)
 	{
 		ft_putchar('-');
